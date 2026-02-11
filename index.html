@@ -8,39 +8,40 @@
   <style>
     body {
       margin: 0;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       background: white;
-      font-family: system-ui, -apple-system, Arial, sans-serif;
-      gap: 24px;
+      cursor: pointer;
     }
 
     img {
-      width: 420px;       /* controls size */
-      max-width: 85vw;    /* responsive on mobile */
+      width: 600px;       /* Bigger image */
+      max-width: 90vw;    /* Responsive on mobile */
       height: auto;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-
-    audio {
-      width: 420px;
-      max-width: 85vw;
+      display: block;
     }
   </style>
 </head>
 
 <body>
 
-  <img src="cover.png" alt="Cover art">
+  <img src="cover.jpg" alt="Cover art">
 
-  <audio controls autoplay loop>
-    <source src="song.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="bg-music" src="song.mp3" loop></audio>
+
+  <script>
+    const audio = document.getElementById("bg-music");
+
+    // Try autoplay immediately
+    audio.play().catch(() => {
+      // If blocked, wait for first click anywhere
+      document.body.addEventListener("click", () => {
+        audio.play();
+      }, { once: true });
+    });
+  </script>
 
 </body>
 </html>
-
