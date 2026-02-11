@@ -13,12 +13,11 @@
       justify-content: center;
       align-items: center;
       background: white;
-      cursor: pointer;
     }
 
     img {
-      width: 600px;       /* Bigger image */
-      max-width: 90vw;    /* Responsive on mobile */
+      width: 650px;
+      max-width: 90vw;
       height: auto;
       display: block;
     }
@@ -27,20 +26,22 @@
 
 <body>
 
-  <img src="cover.jpg" alt="Cover art">
+  <img src="cover.png" alt="Cover art">
 
-  <audio id="bg-music" src="song.mp3" loop></audio>
+  <!-- muted allows autoplay -->
+  <audio id="music" src="song.mp3" autoplay muted loop></audio>
 
   <script>
-    const audio = document.getElementById("bg-music");
+    const music = document.getElementById("music");
 
-    // Try autoplay immediately
-    audio.play().catch(() => {
-      // If blocked, wait for first click anywhere
-      document.body.addEventListener("click", () => {
-        audio.play();
-      }, { once: true });
-    });
+    // Unmute once user interacts
+    function enableSound() {
+      music.muted = false;
+      music.play();
+      document.removeEventListener("click", enableSound);
+    }
+
+    document.addEventListener("click", enableSound);
   </script>
 
 </body>
