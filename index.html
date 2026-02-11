@@ -1,6 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Now Playing</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      font-family: system-ui, -apple-system, Arial, sans-serif;
+      gap: 24px;
+    }
+
+    img {
+      width: 420px;       /* controls size */
+      max-width: 85vw;    /* responsive on mobile */
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    audio {
+      width: 420px;
+      max-width: 85vw;
+    }
+  </style>
+</head>
+
 <body>
 
-birthday dinners coming soon
+  <img src="cover.jpg" alt="Cover art">
+
+  <audio controls autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
 
 </body>
-
+</html>
